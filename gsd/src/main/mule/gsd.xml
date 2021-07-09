@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="babb73b8-bbf5-4770-b576-22e4a732a52d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="gsdFlow" doc:id="23e7efb1-ba82-422a-91d0-aae3f9ee2ac9" >
+		<http:listener doc:name="Listener" doc:id="739c7b81-3d7a-40ac-86b7-d2a8ac5d39a7" config-ref="HTTP_Listener_config" path="/gsd"/>
+		<set-payload value='#["hello"]' doc:name="Set Payload" doc:id="97bd8d16-ced5-42c1-88dd-d49c081b61eb" />
+	</flow>
+</mule>
