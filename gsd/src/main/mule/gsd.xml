@@ -10,5 +10,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="gsdFlow" doc:id="23e7efb1-ba82-422a-91d0-aae3f9ee2ac9" >
 		<http:listener doc:name="Listener" doc:id="739c7b81-3d7a-40ac-86b7-d2a8ac5d39a7" config-ref="HTTP_Listener_config" path="/gsd"/>
 		<set-payload value='#["hello"]' doc:name="Set Payload" doc:id="97bd8d16-ced5-42c1-88dd-d49c081b61eb" />
+		<logger level="INFO" doc:name="Logger" doc:id="e5c1a5ec-2701-41c8-8fa6-10ce71085237" message="#[payload]"/>
 	</flow>
 </mule>
