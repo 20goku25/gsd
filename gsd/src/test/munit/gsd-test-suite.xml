@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="gsd-test-suite.xml" />
+	<munit:test name="gsd-test-suite-gsdFlowTest" doc:id="7575f4e9-b878-4d0e-baa1-56ed7154a82b" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to gsdFlow" doc:id="69d6f133-935c-4e22-ab67-ddba9ea62efb" name="gsdFlow"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="a0b3a73d-b86a-4590-b533-a8ba456f983d" actual="#[payload]" expected='#["Hello Mule"]' message="#[&quot;it doesn't match&quot;]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="gsd-test-suite-gsdFlowTest1" doc:id="7c2a82ea-4298-4034-be9d-a86cf15268a7" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to gsdFlow" doc:id="fb72d551-cadd-45b2-ac00-6e1a20e92962" name="gsdFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="4ae404a5-a1e8-4086-b393-f9bbedded2e8" message='#["payload does not match"]' expression="#[payload]" is="#[MunitTools::startsWith('Hello')]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
